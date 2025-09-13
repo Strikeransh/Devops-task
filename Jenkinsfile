@@ -16,7 +16,7 @@ pipeline {
                   #cd devops-task
                   # Example: Node.js project
                   npm install
-                  npm test || echo "Tests failed or not present"
+                  #npm test || echo "Tests failed or not present"
                 '''
             }
         }

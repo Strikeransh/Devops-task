@@ -29,6 +29,8 @@ pipeline {
             steps {
                 echo "Building Docker image..."
                 sh '''
+                  echo CONFIG.ecr_repo
+                  echo $CONFIG.ecr_repo
                   #cd /home/ubuntu/devops-task/
                   docker build -t $CONFIG.ecr_repo:$CONFIG.ecr_img_tag .
 

@@ -3,49 +3,53 @@ pipeline {
 
     environment {
         // Customize these
-        GCP_REGION    = "us-central1"
-        GCP_PROJECT   = "playground-s-11-1f24307d"
-        GCP_REPO      = "devops"              // Artifact Registry repo name
-        IMAGE_NAME    = "logo-server"
-        IMAGE_TAG     = "latest"
-        IMAGE_URI     = "${GCP_REGION}-docker.pkg.dev/${GCP_PROJECT}/${GCP_REPO}/${IMAGE_NAME}:${IMAGE_TAG}"
+        AWS_REGION = "us-east-1"
+        ECR_REPO   = "855455101288.dkr.ecr.us-east-1.amazonaws.com/devops"
+        IMAGE_TAG  = "latest"
     }
 
     stages {
+        // stage('Build') {
+        //     steps {
+        //         echo "Installing dependencies & running tests..."
+        //         sh '''
+        //           #cd devops-task
+        //           # Example: Node.js project
+        //           npm install
+        //           #npm test || echo "Tests failed or not present"
+        //         '''
+        //     }
+        // }
+
         stage('Dockerize') {
             steps {
                 echo "Building Docker image..."
                 sh '''
-                  docker build -t $IMAGE_URI .
+                  #cd /home/ubuntu/devops-task/
+                  docker build -t $ECR_REPO:$IMAGE_TAG .
+
                 '''
             }
         }
 
         stage('Push to Registry') {
             steps {
-                echo "Logging into GCP Artifact Registry and pushing image..."
+                echo "Logging into ECR and pushing image..."
                 sh '''
-                  # Authenticate Docker with Artifact Registry
-                  gcloud auth configure-docker $GCP_REGION-docker.pkg.dev -q
-
-                  # Push the image
-                  docker push $IMAGE_URI
+                  aws ecr get-login-password --region $AWS_REGION | \
+                  docker login --username AWS --password-stdin $ECR_REPO
+                  docker push $ECR_REPO:$IMAGE_TAG
                 '''
             }
         }
 
         stage('Deploy') {
             steps {
-                echo "Deploying to GKE..."
+                echo "Deploying to AWS EKS..."
                 sh '''
-                  # Update kubeconfig to connect to GKE cluster
-                  gcloud container clusters get-credentials devops-cluster --region $GCP_REGION --project $GCP_PROJECT
-
-                  # Update deployment with new image
+                  aws eks --region $AWS_REGION update-kubeconfig --name devops-cluster
                   kubectl set image deployment/logo-server \
-                    logo-server=$IMAGE_URI -n default
-
-                  # Wait for rollout
+                  logo-server=$ECR_REPO:$IMAGE_TAG -n default
                   kubectl rollout status deployment/logo-server -n default
                 '''
             }

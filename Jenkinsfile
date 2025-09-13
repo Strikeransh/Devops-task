@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         // Customize these
-        CONFIG = readJSON file: 'env-config.json'
+        CONFIG = readJSON file: './env-config.json'
         AWS_REGION = CONFIG.aws_region
         ECR_REPO = CONFIG.ecr_repo
         CLUSTER_NAME = CONFIG.cluster_name

@@ -6,7 +6,7 @@ RUN npm ci
 COPY app/ .
 # no build step needed, but kept for flexibility
 RUN echo "Build step skipped (static logo app)"
-RUN echo "Build complete"
+RUN echo "Build complete "
 # Runtime stage
 FROM node:20-alpine
 WORKDIR /app

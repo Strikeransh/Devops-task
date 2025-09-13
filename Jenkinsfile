@@ -27,6 +27,8 @@ pipeline {
                 sh '''
                   #cd /home/ubuntu/devops-task/
                   docker build -t $ECR_REPO:$IMAGE_TAG .
+                  #docker build -t 114657496116.dkr.ecr.us-east-1.amazonaws.com/devops-task:latest -f docker/Dockerfile .
+
                 '''
             }
         }

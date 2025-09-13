@@ -9,17 +9,17 @@ pipeline {
     }
 
     stages {
-        stage('Build') {
-            steps {
-                echo "Installing dependencies & running tests..."
-                sh '''
-                  #cd devops-task
-                  # Example: Node.js project
-                  npm install
-                  #npm test || echo "Tests failed or not present"
-                '''
-            }
-        }
+        // stage('Build') {
+        //     steps {
+        //         echo "Installing dependencies & running tests..."
+        //         sh '''
+        //           #cd devops-task
+        //           # Example: Node.js project
+        //           npm install
+        //           #npm test || echo "Tests failed or not present"
+        //         '''
+        //     }
+        // }
 
         stage('Dockerize') {
             steps {

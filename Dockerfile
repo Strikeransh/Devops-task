@@ -1,9 +1,9 @@
 # Build stage
 FROM node:20-alpine AS build
 WORKDIR /app
-COPY app/package*.json ./
+COPY ./package*.json ./
 RUN npm ci
-COPY app/ .
+COPY . .
 # no build step needed, but kept for flexibility
 RUN echo "Build step skipped (static logo app)"
 RUN echo "Build complete "

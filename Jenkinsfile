@@ -3,9 +3,13 @@ pipeline {
 
     environment {
         // Customize these
-        AWS_REGION = "us-east-1"
-        ECR_REPO   = "855455101288.dkr.ecr.us-east-1.amazonaws.com/devops"
-        IMAGE_TAG  = "latest"
+        CONFIG = readJSON file: 'env-config.json'
+        def AWS_REGION = CONFIG.aws_region
+        def ECR_REPO = CONFIG.ecr_repo
+        def CLUSTER_NAME = CONFIG.cluster_name
+        //AWS_REGION = "us-east-1"
+        //ECR_REPO   = "855455101288.dkr.ecr.us-east-1.amazonaws.com/devops"
+        def IMAGE_TAG  = CONFIG.ecr_img_tag
     }
 
     stages {

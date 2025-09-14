@@ -28,7 +28,7 @@ Github webhook
 Step 2. Create the EKS cluster and attache the default roles.<br>
 Step 3. Assign the Iam role to jenkins server to access the AWS service or use Iam user.<br>
 Step 4. Configure the nodes for EKS cluster. (we are using AWS fargate)<br>
-Step 5: Install above mentioned tools on AWS EC2 server. ( use script.bat file for all required installation).<br>
+Step 5: Install above mentioned tools on AWS EC2 server. ( use setup.bat file for all required tool installation).<br>
 Step 6: Configure the jenkins tools.<br>
 Step 7. Install below plugin on jenkins<br>
   a. Github Plugins<br>

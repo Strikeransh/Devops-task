@@ -47,7 +47,7 @@ pipeline {
             steps {
                 echo "Deploying to AWS EKS..."
                 sh '''
-                  aws eks --region $AWS_REGION update-kubeconfig --name devops
+                  aws eks --region $AWS_REGION update-kubeconfig --name devops-cluster
 		          kubectl apply -f deployment/logo-server.yaml
                   kubectl set image deployment/logo-server logo-server=$ECR_REPO:$IMAGE_TAG -n default
                   kubectl rollout status deployment/logo-server -n default

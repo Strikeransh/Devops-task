@@ -1,61 +1,46 @@
-# Logo Server
+<h1>DevOps EKS Deployment Project </h1>
+This project demonstrates deploying a containerized Logo Server application to Amazon EKS (Elastic Kubernetes Service) using AWS Fargate for serverless pod execution.
+The application is exposed externally using a Kubernetes LoadBalancer Service backed by an AWS ELB.
 
-A simple Express.js web server that serves the Swayatt logo image.
+<h1>Project Overview</h1>
 
-## What is this app?
+<b>Cluster: Amazon EKS (devops-cluster)
 
-This is a lightweight Node.js application built with Express.js that serves a single logo image (`logoswayatt.png`) when accessed through a web browser. When you visit the root URL, the server responds by displaying the Swayatt logo.
+Compute: AWS Fargate profile (devops-fargate)
 
-## Prerequisites
+Namespace: default
 
-- Node.js (version 12 or higher)
-- npm (Node Package Manager)
+Application: logo-server (Docker image hosted in Amazon ECR)
 
-## Installation
+Service: LoadBalancer service for external access</b>
 
-1. Clone or download this repository
-2. Navigate to the project directory:
-   ```bash
-   cd "devops task"
-   ```
-3. Install dependencies:
-   ```bash
-   npm install
-   ```
+<h1>ENV Setup:</h1>
+<b>Configure and install Below tools:</b>
+Java
+Jenkins
+Docker
+Kubernetes
+AWS-CLI
+Github webhook
 
-## How to Start the App
-
-Run the following command:
-```bash
-npm start
-```
-
-The server will start and display:
-```
-Server running on http://localhost:3000
-```
-
-## Usage
-
-Once the server is running, open your web browser and navigate to:
-```
-http://localhost:3000
-```
-
-You will see the Swayatt logo displayed in your browser.
-
-## Project Structure
-
-```
-├── app.js              # Main server file
-├── package.json        # Project dependencies and scripts
-├── logoswayatt.png     # Logo image file
-└── README.md          # This file
-```
-
-## Technical Details
-
-- **Framework**: Express.js
-- **Port**: 3000
-- **Endpoint**: GET `/` - serves the logo image
-- **File served**: `logoswayatt.png`
+<H1>Steps to Configure</H1>
+<br>Step 1. Create a ECR repository and update the repository link in jenkins file<br>
+Step 2. Create the EKS cluster and attache the default roles.<br>
+Step 3. Assign the Iam role to jenkins server to access the AWS service or use Iam user.
+Step 4. Configure the nodes for EKS cluster. (we are using AWS fargate)
+Step 5: Install abovementioned tools on AWS EC2 server. ( use script.bat file for all required installation).
+Step 6: Configure the jenkins tools.
+Step 7. Install below plugin on jenkins
+  a. Github Plugins
+  b. Github Integration Plugins
+  c. Pipeline
+Step 8: Create the pipeline (Refer to the Jenkins Pipeline Configure Images)
+Step 9: Configure the webhook on Github Repo for jenkins server (Refer to the Github Webhook image)
+Step 10: Now Build the pipeline from jenkins server.
+Step 11: Go to the build number and check the console output on jenkins dashboard.
+Step 12: Go to the EKS console and check for pods and nodes deployment.
+Step 13: Go to the jenkins server and check for podes details
+ kubectl get pods
+Step 14: Use below command to get the endpoint for our cluster (Refer to the Kubectl endpoint image)
+  kubectl get endpoints logo-server-service -n default
+Step 15: Open the endpoint in the pbrowser. (we have window server in same VPC, Refer to the Application Images)

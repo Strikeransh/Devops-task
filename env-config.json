@@ -1,6 +1,0 @@
-{
-  "aws_region": "us-east-1",
-  "cluster_name": "devops-cluster",
-  "ecr_repo": "855455101288.dkr.ecr.us-east-1.amazonaws.com/devops",
-  "ecr_img_tag": "latest"
-}

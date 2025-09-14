@@ -23,9 +23,9 @@ Kubernetes
 AWS-CLI
 Github webhook
 
-<H1>Prequisite</H1>
-Step 1. Create a ECR repository and update the repository link in jenkins file
-Step 2. Create the EKS cluster and attache the default roles.
+<H1>Steps to Configure</H1>
+<br>Step 1. Create a ECR repository and update the repository link in jenkins file<br>
+Step 2. Create the EKS cluster and attache the default roles.<br>
 Step 3. Assign the Iam role to jenkins server to access the AWS service or use Iam user.
 Step 4. Configure the nodes for EKS cluster. (we are using AWS fargate)
 Step 5: Install abovementioned tools on AWS EC2 server. ( use script.bat file for all required installation).

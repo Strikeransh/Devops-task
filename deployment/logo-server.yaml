@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: logo-server
-        image: 855455101288.dkr.ecr.us-east-1.amazonaws.com/devops:latest
+        image: 716713632584.dkr.ecr.us-east-1.amazonaws.com/devops:latest
         ports:
         - containerPort: 3000   # change if your app uses a different port
         imagePullPolicy: Always

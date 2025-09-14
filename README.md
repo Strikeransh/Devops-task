@@ -31,9 +31,9 @@ Github webhook
 <h2>Step 5.</h2><h4>  Install above mentioned tools on AWS EC2 server. ( use setup.bat file for all required tool installation).<br></h4>
 <h2>Step 6.</h2><h4>  Configure the jenkins tools.<br></h4>
 <h2>Step 7.</h2><h4>  Install below plugin on jenkins<br></h4>
-  <ul>a. Github Plugins<br>
-  <ul>b. Github Integration Plugins<br>
-  <ul>c. Pipeline<br>
+  <ul>a. Github Plugins</ul><br>
+  <ul>b. Github Integration Plugins</ul><br>
+  <ul>c. Pipeline</ul><br>
 <h2>Step 8.</h2><h4>  Create the pipeline (Refer to the Jenkins Pipeline Configure Images)<br></h4>
 <h2>Step 9.</h2><h4>  Configure the webhook on Github Repo for jenkins server (Refer to the Github Webhook image)<br></h4>
 <h2>Step 10.</h2><h4>  Now Build the pipeline from jenkins server.<br>

@@ -4,24 +4,24 @@ The application is exposed externally using a Kubernetes LoadBalancer Service ba
 
 <h1>Project Overview</h1>
 
-<b>Cluster: Amazon EKS (devops-cluster)
+<b>Cluster: Amazon EKS (devops-cluster)</ul>
 
-Compute: AWS Fargate profile (devops-fargate)
+<ul>Compute: AWS Fargate profile (devops-fargate)</ul>
 
-Namespace: default
+<ul>Namespace: default</ul>
 
-Application: logo-server (Docker image hosted in Amazon ECR)
+<ul>Application: logo-server (Docker image hosted in Amazon ECR)</ul>
 
-Service: LoadBalancer service for external access</b>
+<ul>Service: LoadBalancer service for external access</ul>
 
 <h1>ENV Setup:</h1>
 <b>Configure and install Below tools:</b>
-Java
-Jenkins
-Docker
-Kubernetes
-AWS-CLI
-Github webhook
+<ul>Java</ul>
+<ul>Jenkins</ul>
+<ul>Docker</ul>
+<ul>Kubernetes</ul>
+<ul>AWS-CLI</ul>
+<ul>Github webhook</ul>
 
 <H1>Steps to Configure</H1>
 <H2>Step 1.</h2> <h4>Create a ECR repository and update the repository link in jenkins file<br></h4>
@@ -43,4 +43,4 @@ Github webhook
  kubectl get pods<br>
 <h2>Step 14.</h2><h4>  Use below command to get the endpoint for our cluster (Refer to the Kubectl endpoint image)<br></h4>
   kubectl get endpoints logo-server-service -n default<br></h4>
-<h2>Step 15.</h2><h4>  Open the endpoint in the pbrowser. (we have window server in same VPC, Refer to the Application Images)<br></h4>
+<h2>Step 15.</h2><h4>  Open the endpoint in the browser. (we have window server in same VPC, Refer to the Application Images)<br></h4>
